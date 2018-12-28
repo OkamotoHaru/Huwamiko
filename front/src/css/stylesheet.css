@@ -16,3 +16,38 @@
     width: 300px;
     height: 30px;
     padding: 0px 15px 0px 15px; }
+
+.bold {
+  font-weight: bold;
+  font-size: 20px; }
+
+.result {
+  margin: 0px 0px 0px 160px; }
+  .result table {
+    width: 1000px; }
+    .result table th {
+      border-radius: 10px;
+      font-size: 15px; }
+    .result table td {
+      padding: 0px 0px 0px 15px;
+      align: left; }
+    .result table .th_item {
+      border: 1px solid #ef857d;
+      background-color: #ef857d; }
+    .result table .th_job {
+      border: 1px solid #ffedab;
+      background-color: #ffedab; }
+    .result table .th_learn {
+      border: 1px solid #a3d6cc;
+      background-color: #a3d6cc; }
+    .result table .th_diff {
+      border: 1px solid #bbe2f1;
+      background-color: #bbe2f1; }
+
+.mat_result {
+  margin: 50px 0px 0px 160px; }
+
+footer {
+  margin: 60px 0px 0px 0px;
+  text-align: center;
+  font-size: 12px; }
