@@ -1,0 +1,22 @@
+.titlename{
+    font-size: 40px;
+    font-weight: bold;
+    color: #000;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    text-align: center;
+}
+
+.search{
+    text-align: center;
+    input{
+        border: 1px solid #aaaaaa;
+        border-radius: 10px;
+        width: 300px;
+        height: 30px;
+        padding: 0px 15px 0px 15px;
+    }
+}
+
+#item_name{
+    text-align: center;
+}

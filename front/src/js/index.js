@@ -11,9 +11,11 @@ var TITLE = "ふわふわミコッテ（仮）"
 function setTitleName(){
 	var tabTitle = document.getElementById("tabTitle")
 	var pageTitle = document.getElementById("pageTitle")
+	var footerTitle = document.getElementById("footerTitle")
 
 	tabTitle.textContent = TITLE
 	pageTitle.textContent = TITLE
+	footerTitle.textContent = TITLE
 }
 
 //--------------------------------------------------
