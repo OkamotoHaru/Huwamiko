@@ -37,18 +37,22 @@
         .th_item{
             $col: #ef857d;
             @include thColor($col)
+            width: 30%;
         }
         .th_job{
             $col: #ffedab;
             @include thColor($col);
+            width: 15%;
         }
         .th_learn{
             $col: #a3d6cc;
             @include thColor($col);
+            width: 25%;
         }
         .th_diff{
             $col: #bbe2f1;
             @include thColor($col);
+            width: 25%;
         }
     }
 }

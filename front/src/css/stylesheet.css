@@ -26,16 +26,20 @@
       align: left; }
     .result table .th_item {
       border: 1px solid #ef857d;
-      background-color: #ef857d; }
+      background-color: #ef857d;
+      width: 30%; }
     .result table .th_job {
       border: 1px solid #ffedab;
-      background-color: #ffedab; }
+      background-color: #ffedab;
+      width: 15%; }
     .result table .th_learn {
       border: 1px solid #a3d6cc;
-      background-color: #a3d6cc; }
+      background-color: #a3d6cc;
+      width: 25%; }
     .result table .th_diff {
       border: 1px solid #bbe2f1;
-      background-color: #bbe2f1; }
+      background-color: #bbe2f1;
+      width: 25%; }
 
 .mat_result {
   margin: 50px 0px 0px 160px; }
