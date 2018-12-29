@@ -16,3 +16,36 @@
 
 #item_name {
   text-align: center; }
+
+.th_item {
+  border: 1px solid #ef857d;
+  background-color: #ef857d;
+  border-radius: 10px; }
+
+.th_job {
+  border: 1px solid #ffedab;
+  background-color: #ffedab;
+  border-radius: 10px; }
+
+.th_learn {
+  border: 1px solid #a3d6cc;
+  background-color: #a3d6cc;
+  border-radius: 10px; }
+
+.th_diff {
+  border: 1px solid #bbe2f1;
+  background-color: #bbe2f1;
+  border-radius: 10px; }
+
+.th_telep {
+  border: 1px solid #e3acae;
+  background-color: #e3acae;
+  border-radius: 10px; }
+
+#item_table_div, #mat_table_div {
+  text-align: center; }
+
+#item_table, #mat_table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px; }

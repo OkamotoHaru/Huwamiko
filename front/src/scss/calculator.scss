@@ -20,3 +20,45 @@
 #item_name{
     text-align: center;
 }
+
+@mixin thColor($col) {
+    border: 1px solid $col;
+    background-color: $col;
+    border-radius: 10px;
+}
+
+.th_item{
+    $col: #ef857d;
+    @include thColor($col)
+    //width: 30%;
+}
+.th_job{
+    $col: #ffedab;
+    @include thColor($col);
+    //width: 15%;
+}
+.th_learn{
+    $col: #a3d6cc;
+    @include thColor($col);
+    //width: 25%;
+}
+.th_diff{
+    $col: #bbe2f1;
+    @include thColor($col);
+    //width: 25%;
+}
+.th_telep{
+    $col: #e3acae;
+    @include thColor($col);
+    //width: 25%;
+}
+
+#item_table_div, #mat_table_div{
+    text-align: center;
+}
+
+#item_table, #mat_table{
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+}

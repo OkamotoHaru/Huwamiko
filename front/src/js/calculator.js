@@ -87,5 +87,9 @@ function setSearchTable(){
 		var td_diff = document.createElement("td")
 		td_diff.textContent = sub_items[i][3]
 		tr.appendChild(td_diff)
+		//テレポ
+		var td_telep = document.createElement("td")
+		td_telep.textContent = sub_items[i][5]
+		tr.appendChild(td_telep)
 	}
 }
