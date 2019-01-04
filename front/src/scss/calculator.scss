@@ -37,12 +37,12 @@
     @include thColor($col);
     //width: 15%;
 }
-.th_learn{
+.th_learn, .th_have{
     $col: #a3d6cc;
     @include thColor($col);
     //width: 25%;
 }
-.th_diff{
+.th_diff, .th_pos{
     $col: #bbe2f1;
     @include thColor($col);
     //width: 25%;
@@ -52,12 +52,16 @@
     @include thColor($col);
     //width: 25%;
 }
+.th_num{
+    $col: #cab8d9;
+    @include thColor($col);
+}
 
-#item_table_div, #mat_table_div{
+#item_table_div, #mat_table_div, #comp_table_div{
     text-align: center;
 }
 
-#item_table, #mat_table{
+#item_table, #mat_table, #comp_table{
     margin-left: auto;
     margin-right: auto;
     width: 800px;
