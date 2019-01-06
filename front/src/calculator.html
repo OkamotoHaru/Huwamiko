@@ -20,19 +20,20 @@
         <br>
         <!-- 完成アイテムリスト -->
         <div id="comp_table_div">
-        <table border="1" id="comp_table">
+        <table id="comp_table">
             <tr>
                 <th colspan="3">完成品</th>
             </tr>
             <tr>
-                <th class="th_item">名称</th>
+                <th class="th_name">名称</th>
                 <th class="th_num">個数</th>
             </tr>
             <tr>
                 <td>羅刹剣</td>
-                <td>1 
-                    <button>+</button>
-                    <button>-</button>
+                <td>
+                    <div id="comp_num">1</div>
+                    <button id="comp_plus">+</button>
+                    <button id="comp_minus">-</button>
                 </td>
             </tr>
         </table>
@@ -40,34 +41,12 @@
         <br>
         <!-- 中間アイテムリスト -->
         <div id="item_table_div">
-        <table border="1" id="item_table">
-            <tr>
-                <th colspan="4">中間アイテム</th>
-            </tr>
-            <tr>
-                <th class="th_item">名称</th>
-                <th class="th_num">個数</th>
-                <th class="th_have">所持済</th>
-                <th class="th_job">ジョブ</th>
-            </tr>
-        </table>
+            <table id="item_table"></table>
         </div>
         <br>
         <!-- 素材リスト -->
         <div id="mat_table_div">
-        <table border="1" id="mat_table">
-            <tr>
-                <th colspan="6">素材アイテム</th>
-            </tr>
-            <tr>
-                <th class="th_item">名称</th>
-                <th class="th_num">個数</th>
-                <th class="th_have">所持済</th>
-                <th class="th_job">ジョブ</th>
-                <th class="th_telep">テレポ</th>
-                <th class="th_pos">座標</th>
-            </tr>
-        </table>
+            <table id="mat_table"></table>
         </div>
     </body>
 </html>

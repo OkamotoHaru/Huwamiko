@@ -2,6 +2,7 @@ window.onload = function(){
     setTitleName()
 	setSearchInput()
 	setSearchTable()
+	setListener()
 	console.log("success to open");
 }
 
@@ -38,6 +39,12 @@ var RES_ADDED = {
 	JOB : 2,	//ジョブのみ追加可能
 };
 
+var item_table_th = ["名称","個数","所持済","ジョブ"]
+var item_table_class = ["th_name","th_num","th_have","th_job"]
+var mat_table_th = ["名称","個数","所持済","ジョブ","テレポ","座標"]
+var mat_table_class = ["th_name","th_num","th_have","th_job","th_telep","th_pos"]
+
+var comp_num = 1
 var mat_total_list = []
 var item_total_list = []
 
@@ -52,19 +59,50 @@ function setSearchTable(){
 			break
 		}
 	}
+	//データ初期化
+	item_total_list = []
+	mat_total_list = []
+	item_list = []
+	mat_list = []
+	odd = false
+	//テーブル初期化
+	resetTable("item_table", "中間アイテム", item_table_th, item_table_class)
+	resetTable("mat_table", "素材アイテム", mat_table_th, mat_table_class)
+
 	//リストデータ設定
 	let matNo = 4
 	for (var i=0; i<inputItemData[matNo].length; i++){
-		setList(inputItemData[matNo][i][0], inputItemData[matNo][i][1])
+		setList(inputItemData[matNo][i][0], inputItemData[matNo][i][1] * comp_num)
 	}
 	//設定したリストデータを１本化
 	setTotalList(mat_total_list, mat_list)
 	setTotalList(item_total_list, item_list)
 	//テーブルに反映
-	var mat_table = document.getElementById("mat_table")
+
 	setTable( mat_table, mat_total_list )
-	var item_table = document.getElementById("item_table")
 	setTable( item_table, item_total_list )
+}
+
+/// テーブル初期化
+function resetTable(table_id, top_name_th, sub_th, sub_th_class){
+	var table = document.getElementById(table_id)
+	while(table.firstChild){
+		table.removeChild(table.firstChild)
+	}
+	var tr = document.createElement("tr")
+	table.appendChild(tr)
+	var th_title = document.createElement("th")
+	th_title.textContent = top_name_th
+	th_title.colSpan = sub_th.length
+	tr.appendChild(th_title)
+	tr = document.createElement("tr")
+	table.appendChild(tr)
+	for (var i=0; i<sub_th.length; i++){
+		var th = document.createElement("th")
+		th.textContent = sub_th[i]
+		th.classList.add(sub_th_class[i])
+		tr.appendChild(th)
+	}
 }
 
 var mat_list = []
@@ -73,7 +111,6 @@ var recursion_num = -1
 
 /// リストデータ作成
 function setList(name, num){
-	//console.log(name, num)
 	//再帰カウント
 	recursion_num += 1
 	//配列階層設定
@@ -135,10 +172,13 @@ function setList(name, num){
 					//名前
 					array.push( item_data[i][nameNo] )
 					//個数
+					console.log(multi_num)
 					multi_num = multi_num / item_data[i][6]
-					Math.ceil(multi_num)
+					console.log(multi_num)
+					multi_num = Math.ceil(multi_num)
+					console.log(multi_num)
 					if (multi_num <= 1) { multi_num = 1 }
-					console.log(item_data[i][nameNo], item_data[i][6], num, multi_num)
+					console.log(multi_num)
 					array.push( multi_num )
 					//所持済
 					array.push( "have" )
@@ -180,6 +220,8 @@ function checkAdded(list, newName, newJobName){
 	return array
 }
 
+var odd = false
+
 /// 検索結果テーブルにデータを設定
 function setTable(table, list){
 	for (var i=0; i<list.length; i++){
@@ -187,9 +229,12 @@ function setTable(table, list){
 		table.appendChild( tr )
 		for (var j=0; j<list[i].length; j++){
 			var td = document.createElement("td")
+			if (!odd) { td.classList.add("td_color") }
+			else { td.classList.add("td_color_odd") }
 			switch (list[i][j]){
 			case "have":
 				var select = document.createElement("select")
+				if (!odd) { select.classList.add("select_color") }
 				select.name = "have"
 				td.appendChild(select)
 				var options_text = ["なし","プレイヤー","Juliane","Yuigahama","チョコボかばん","ミラージュドレッサー","カンパニーチェスト"]
@@ -205,6 +250,7 @@ function setTable(table, list){
 			}
 			tr.appendChild(td)
 		}
+		odd = !odd
 	}
 }
 
@@ -228,3 +274,29 @@ function setTotalList(setList, list){
 }
 
 //--------------------------------------------------
+
+var plusEvent = null
+
+/// リスナー設定
+function setListener(){
+	//完成個数変更
+	var plus = document.getElementById("comp_plus")
+	plus.addEventListener("click", function(){ setCompNum(true) }, false)
+	var minus = document.getElementById("comp_minus")
+	minus.addEventListener("click", function(){ setCompNum(false) }, false)
+}
+
+//--------------------------------------------------
+
+/// 完成個数を設定する
+function setCompNum(plus){
+	//個数設定
+	if (plus) {comp_num += 1}
+	else { comp_num -= 1 }
+	if (comp_num < 1){comp_num = 1}
+	//表示設定
+	var num = document.getElementById("comp_num")
+	num.textContent = comp_num
+	//テーブル再設定
+	setSearchTable()
+}

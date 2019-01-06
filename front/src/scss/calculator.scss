@@ -1,3 +1,12 @@
+$tr_color: #f7fcfe;
+
+@mixin setBorder($top: 0, $bottom: 0, $left: 0, $right: 0, $topCol: #000, $bottomCol: #000, $leftCol: #000, $rightCol: #000){
+    border-top: $top solid $topCol;
+    border-bottom: $bottom solid $bottomCol;
+    border-left: $left solid $leftCol;
+    border-right: $right solid $rightCol;
+}
+
 .titlename{
     font-size: 40px;
     font-weight: bold;
@@ -22,12 +31,12 @@
 }
 
 @mixin thColor($col) {
-    border: 1px solid $col;
+    //border: 1px solid $col;
     background-color: $col;
     border-radius: 10px;
 }
 
-.th_item{
+.th_name{
     $col: #ef857d;
     @include thColor($col)
     //width: 30%;
@@ -65,8 +74,27 @@
     margin-left: auto;
     margin-right: auto;
     width: 800px;
+    border-collapse: collapse;
+}
+
+.select_color{
+    background-color: $tr_color;
+}
+
+.td_color{
+    @include setBorder();
+    background-color: $tr_color;
+}
+
+.td_color_odd{
+    @include setBorder();
+    background-color: #fff;
 }
 
 select{
     border: 0px solid #fff;
+}
+
+#comp_num{
+    font-weight: bold;
 }

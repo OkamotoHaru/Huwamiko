@@ -17,33 +17,27 @@
 #item_name {
   text-align: center; }
 
-.th_item {
-  border: 1px solid #ef857d;
+.th_name {
   background-color: #ef857d;
   border-radius: 10px; }
 
 .th_job {
-  border: 1px solid #ffedab;
   background-color: #ffedab;
   border-radius: 10px; }
 
 .th_learn, .th_have {
-  border: 1px solid #a3d6cc;
   background-color: #a3d6cc;
   border-radius: 10px; }
 
 .th_diff, .th_pos {
-  border: 1px solid #bbe2f1;
   background-color: #bbe2f1;
   border-radius: 10px; }
 
 .th_telep {
-  border: 1px solid #e3acae;
   background-color: #e3acae;
   border-radius: 10px; }
 
 .th_num {
-  border: 1px solid #cab8d9;
   background-color: #cab8d9;
   border-radius: 10px; }
 
@@ -53,7 +47,28 @@
 #item_table, #mat_table, #comp_table {
   margin-left: auto;
   margin-right: auto;
-  width: 800px; }
+  width: 800px;
+  border-collapse: collapse; }
+
+.select_color {
+  background-color: #f7fcfe; }
+
+.td_color {
+  border-top: 0 solid #000;
+  border-bottom: 0 solid #000;
+  border-left: 0 solid #000;
+  border-right: 0 solid #000;
+  background-color: #f7fcfe; }
+
+.td_color_odd {
+  border-top: 0 solid #000;
+  border-bottom: 0 solid #000;
+  border-left: 0 solid #000;
+  border-right: 0 solid #000;
+  background-color: #fff; }
 
 select {
   border: 0px solid #fff; }
+
+#comp_num {
+  font-weight: bold; }
