@@ -68,17 +68,15 @@ function setSearchTable(){
 	//テーブル初期化
 	resetTable("item_table", "中間アイテム", item_table_th, item_table_class)
 	resetTable("mat_table", "素材アイテム", mat_table_th, mat_table_class)
-
 	//リストデータ設定
 	let matNo = 4
 	for (var i=0; i<inputItemData[matNo].length; i++){
-		setList(inputItemData[matNo][i][0], inputItemData[matNo][i][1] * comp_num)
+		setList(inputItemData[matNo][i][0], inputItemData[matNo][i][1] * comp_num, inputItemData[6])
 	}
 	//設定したリストデータを１本化
 	setTotalList(mat_total_list, mat_list)
 	setTotalList(item_total_list, item_list)
 	//テーブルに反映
-
 	setTable( mat_table, mat_total_list )
 	setTable( item_table, item_total_list )
 }
@@ -110,7 +108,7 @@ var item_list = []
 var recursion_num = -1
 
 /// リストデータ作成
-function setList(name, num){
+function setList(name, num, compNum){
 	//再帰カウント
 	recursion_num += 1
 	//配列階層設定
@@ -172,14 +170,10 @@ function setList(name, num){
 					//名前
 					array.push( item_data[i][nameNo] )
 					//個数
-					console.log(multi_num)
 					multi_num = multi_num / item_data[i][6]
-					console.log(multi_num)
 					multi_num = Math.ceil(multi_num)
-					console.log(multi_num)
 					if (multi_num <= 1) { multi_num = 1 }
-					console.log(multi_num)
-					array.push( multi_num )
+					array.push( num )
 					//所持済
 					array.push( "have" )
 					//ジョブ
@@ -193,7 +187,7 @@ function setList(name, num){
 
 				for(var j=0; j<item_data[i][4].length; j++){
 					//さーーーーーーいき！！
-					setList( item_data[i][4][j][0], item_data[i][4][j][1] * multi_num )
+					setList( item_data[i][4][j][0], item_data[i][4][j][1] * multi_num, item_data[i][6] )
 				}
 			}
 		}
@@ -231,8 +225,7 @@ function setTable(table, list){
 			var td = document.createElement("td")
 			if (!odd) { td.classList.add("td_color") }
 			else { td.classList.add("td_color_odd") }
-			switch (list[i][j]){
-			case "have":
+			if (list[i][j] == "have"){
 				var select = document.createElement("select")
 				if (!odd) { select.classList.add("select_color") }
 				select.name = "have"
@@ -243,10 +236,20 @@ function setTable(table, list){
 					option.textContent = options_text[k]
 					select.appendChild( option )
 				}
-				break
-			default:
+			}
+			else if ( Array.isArray(list[i][j]) && list[i][j].length > 1){
+				var select = document.createElement("select")
+				if (!odd) { select.classList.add("select_color") }
+				select.name = "job"
+				td.appendChild(select)
+				for (var k=0; k<list[i][j].length; k++){
+					var option = document.createElement("option")
+					option.textContent = list[i][j][k]
+					select.appendChild( option )
+				}
+			}
+			else{
 				td.textContent = list[i][j]
-				break
 			}
 			tr.appendChild(td)
 		}
